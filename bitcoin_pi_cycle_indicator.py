@@ -86,12 +86,33 @@ def main():
             df = calculate_pi_cycle_indicator(df)
             is_top = check_pi_cycle_top(df)
 
-            if is_top or first_run:
-                subject = "Bitcoin Pi Cycle Top Indicator Test Alert"
-                body = f"This is a test email from your Bitcoin Pi Cycle Top Indicator script. Sent on {datetime.now()}."
+            if first_run:
+                subject = "Bitcoin Pi Cycle Top Indicator Script Started"
+                body = f"""
+The Bitcoin Pi Cycle Top Indicator script has started running at {datetime.now()}.
+
+This script will continuously monitor the Bitcoin price and check for a Pi Cycle Top indicator.
+
+If a Pi Cycle Top is detected, you will receive an email alert similar to this:
+
+Subject: Bitcoin Pi Cycle Top Indicator Alert
+Body: A potential Bitcoin market top has been detected by the Pi Cycle Top Indicator at {datetime.now()}.
+Current Bitcoin price: $XX,XXX.XX
+111-day Moving Average: $XX,XXX.XX
+350-day Moving Average (x2): $XX,XXX.XX
+
+Please note that this is just one indicator and should not be used as the sole basis for investment decisions.
+
+The script will continue running and check for updates every 5 minutes.
+"""
                 send_email(subject, body, recipient_email)
-                print(f"Test alert sent on {datetime.now()}")
+                print(f"Initial startup email sent on {datetime.now()}")
                 first_run = False
+            elif is_top:
+                subject = "Bitcoin Pi Cycle Top Indicator Alert"
+                body = f"A potential Bitcoin market top has been detected by the Pi Cycle Top Indicator at {datetime.now()}."
+                send_email(subject, body, recipient_email)
+                print(f"Pi Cycle Top alert sent on {datetime.now()}")
             else:
                 print(f"No Pi Cycle Top detected at {datetime.now()}")
 

@@ -22,7 +22,7 @@ To use this tool, follow these steps:
    python bitcoin_pi_cycle_indicator.py
    ```
 
-The script will generate a graph showing the Bitcoin price along with the Pi Cycle Top Indicator.
+When an indicator happens, the script will generate and send an email showing the Bitcoin Pi Cycle Top Indicator.
 
 ## Data Source
 

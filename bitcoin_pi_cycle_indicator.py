@@ -103,6 +103,9 @@ Current Bitcoin price: $XX,XXX.XX
 
 Please note that this is just one indicator and should not be used as the sole basis for investment decisions.
 
+For more information about the Pi Cycle Top indicator, visit:
+https://studio.glassnode.com/metrics?a=BTC&m=indicators.PiCycleTop
+
 The script will continue running and check for updates every 5 minutes.
 """
                 send_email(subject, body, recipient_email)
@@ -110,7 +113,10 @@ The script will continue running and check for updates every 5 minutes.
                 first_run = False
             elif is_top:
                 subject = "Bitcoin Pi Cycle Top Indicator Alert"
-                body = f"A potential Bitcoin market top has been detected by the Pi Cycle Top Indicator at {datetime.now()}."
+                body = f"""A potential Bitcoin market top has been detected by the Pi Cycle Top Indicator at {datetime.now()}.
+
+For more information, visit:
+https://studio.glassnode.com/metrics?a=BTC&m=indicators.PiCycleTop"""
                 send_email(subject, body, recipient_email)
                 print(f"Pi Cycle Top alert sent on {datetime.now()}")
             else:
